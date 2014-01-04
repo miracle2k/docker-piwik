@@ -41,6 +41,7 @@ add    ./nginx/nginx.conf /etc/nginx/nginx.conf
 add    ./nginx/sites-enabled/default /etc/nginx/sites-enabled/default
 add    ./nginx/ssl.crt /etc/ssl/server.crt
 add    ./nginx/ssl.key /etc/ssl/server.key
+run    chmod 0700 /etc/ssl/server.crt /etc/ssl/server.key
 add    ./php5/fpm/php-fpm.conf /etc/php5/fpm/php-fpm.conf
 add    ./php5/fpm/php.ini /etc/php5/fpm/php.ini
 add    ./php5/fpm/pool.d/www.conf /etc/php5/fpm/pool.d/www.conf

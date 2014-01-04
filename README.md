@@ -46,6 +46,16 @@ name which is `dz0ny/piwik:latest`.
  + `-p` is the port it connects to, `-p=host_port:docker_port`
 
 
+## Using SSL
+
+The nginx running in the container will serve SSL on port 443, as expected. You
+can provide your own SSL certificate using the environment variables SSL_KEY and
+SSL_CERT, which should contain the actual file contents. For example:
+
+    sudo docker run -p=10000:443 -v=/mnt/piwik:/data -e SSL_KEY=$(cat ssl.key)
+        -e SSL_CERT=$(cat ssl.crt) dz0ny/piwik
+
+
 [0]: http://www.docker.io/gettingstarted/
 [1]: http://piwik.org/
 
