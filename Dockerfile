@@ -39,6 +39,8 @@ run    cd /srv/www/piwik;  curl -sS https://getcomposer.org/installer | php; php
 # Load in all of our config files.
 add    ./nginx/nginx.conf /etc/nginx/nginx.conf
 add    ./nginx/sites-enabled/default /etc/nginx/sites-enabled/default
+add    ./nginx/ssl.crt /etc/ssl/server.crt
+add    ./nginx/ssl.key /etc/ssl/server.key
 add    ./php5/fpm/php-fpm.conf /etc/php5/fpm/php-fpm.conf
 add    ./php5/fpm/php.ini /etc/php5/fpm/php.ini
 add    ./php5/fpm/pool.d/www.conf /etc/php5/fpm/pool.d/www.conf
@@ -56,6 +58,7 @@ run	   chmod +x /start; chown -R www-data:www-data /srv/www/piwik
 
 # 80 is for nginx web, /data contains static files and database /start runs it.
 expose 80
+expose 443
 volume ["/data"]
 cmd    ["/start"]
 

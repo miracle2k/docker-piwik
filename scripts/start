@@ -29,6 +29,21 @@ then
 fi
 
 
+# Use certificates from env variables
+if [ -n "$SSL_KEY" ]; then
+    file="/etc/ssl/server.key"
+    echo "Writing SSL_KEY to $file"
+    mkdir -p "$(dirname $file)"
+    echo "$SSL_KEY" > $file
+fi
+
+if [ -n "$SSL_CERT" ]; then
+    file="/etc/ssl/server.crt"
+    echo "Writing SSL_CERT to $file"
+    mkdir -p "$(dirname $file)"
+    echo "$SSL_CERT" > $file
+fi
+
 # Lock down our mysql root account.
 if [ ! -f /data/mysql_root_password.txt ]
 then
